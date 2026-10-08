@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Urna Eletrônica - Trabalho de Segurança</title>
+<link rel="preload" href="fonts/atkinson-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="pagina">
+  <header class="topo">
+    <h1>Urna Eletrônica Online</h1>
+    <p>Simulação das eleições de 2026. Cargo: Presidente da República.</p>
+  </header>
+
+  <p id="Mensagem"></p>
+
+  <div>
+    <div class="urna">
+      <!-- TELA DE LOGIN DO ELEITOR -->
+      <section id="TelaAcesso" class="tela">
+        <h2 id="TituloAcesso">Identifique-se para votar</h2>
+        <div class="campo">
+          <label for="Cpf">CPF</label>
+          <input id="Cpf" type="text" maxlength="14" autocomplete="off" placeholder="000.000.000-00">
+        </div>
+        <div class="campo">
+          <label for="Senha">Senha</label>
+          <input id="Senha" type="password" maxlength="128">
+          <small>A senha precisa de 10 caracteres (maiúscula, minúscula, número e símbolo).</small>
+        </div>
+        <div class="acoes-tela">
+          <button id="BotaoEntrar" type="button" class="btn">Entrar</button>
+          <button id="BotaoCadastrar" type="button" class="btn secundario">Criar conta</button>
+        </div>
+        
+        <details class="comprovante-conferir">
+          <summary>Conferir um comprovante</summary>
+          <div class="linha">
+            <!-- <label for="CodigoConferir">Código do comprovante</label> -->
+            <input id="CodigoConferir" type="text" maxlength="64" autocomplete="off" placeholder="Código recebido ao votar">
+            <button id="BotaoConferir" type="button" class="btn secundario">Conferir</button>
+          </div>
+        </details>
+        <p class="apoio"><a href="auditoria.html">Acesso restrito (Auditoria)</a></p>
+      </section>
+
+      <!-- TELA DA URNA MESMO -->
+      <section id="TelaUrna" class="tela" hidden>
+        <div class="votacao">
+          <div>
+            <p class="instrucao">Seu voto para</p>
+            <p class="cargo">Presidente</p>
+            <div class="casas" id="Casas">
+              <span class="casa" id="Casa0"></span>
+              <span class="casa" id="Casa1"></span>
+            </div>
+            <div id="Dados" class="dados"></div>
+          </div>
+          <img id="Retrato" class="retrato vazio" alt="Foto do candidato" width="161" height="225">
+        </div>
+        <p class="rodape-tela" id="RodapeTela">Digite o número do candidato.</p>
+      </section>
+
+      <section id="TelaFim" class="tela fim" hidden>
+        <p class="grande" id="TituloFim">FIM</p>
+        <h2>Seu voto foi registrado com sucesso!</h2>
+        <p>Guarde este código. Ele mostra que o voto foi contado e não revela em quem você votou.</p>
+        <p class="codigo" id="Comprovante"></p>
+        <div class="acoes-tela">
+          <button id="BotaoCopiar" type="button" class="btn">Copiar código</button>
+          <button id="BotaoNovo" type="button" class="btn secundario">Encerrar</button>
+        </div>
+      </section>
+
+      <section id="TelaJaVotou" class="tela" hidden>
+        <h2 id="TituloJaVotou">Este CPF já votou.</h2>
+        <p>Cada CPF vota uma única vez. Não é possível votar de novo.</p>
+        <div class="acoes-tela">
+          <button id="BotaoSairJaVotou" type="button" class="btn">Sair</button>
+        </div>
+      </section>
+
+      <div id="PainelTeclas" class="painel-teclas" hidden>
+        <div class="teclado" id="Teclado"></div>
+        <div class="teclas-acao">
+          <button id="BotaoBranco" type="button" class="tecla branco">Branco</button>
+          <button id="BotaoCorrige" type="button" class="tecla corrige">Corrige</button>
+          <button id="BotaoConfirma" type="button" class="tecla confirma">Confirma</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside id="Guia" class="guia" hidden>
+    <h2>Candidatos (Cola)</h2>
+    <p class="apoio">Clique no candidato para preencher automaticamente.</p>
+    <ul id="ListaCandidatos"></ul>
+  </aside>
+
+  <!-- <p class="creditos">Trabalho de Segurança e Auditoria</p> -->
+</div>
+<script src="app.js"></script>
+</body>
+</html>

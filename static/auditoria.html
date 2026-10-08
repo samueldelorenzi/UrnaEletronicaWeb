@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auditoria – Urna Eletrônica</title>
+<link rel="preload" href="fonts/atkinson-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="pagina">
+  <header class="topo">
+    <h1>Painel de Auditoria</h1>
+    <p>Área restrita. Login necessário para auditores e administradores.</p>
+  </header>
+
+  <!-- <p>TODO: separar painel de admin e auditor dps</p> -->
+  <p id="Mensagem"></p>
+
+  <div>
+    <div class="urna" id="Login">
+      <section class="tela">
+        <h2 id="TituloLogin">Entrar no sistema</h2>
+        <div class="campo">
+          <label for="Cpf">CPF</label>
+          <input id="Cpf" type="text" maxlength="14" placeholder="000.000.000-00">
+        </div>
+        <div class="campo">
+          <label for="Senha">Senha</label>
+          <input id="Senha" type="password" maxlength="128">
+        </div>
+        <div class="acoes-tela">
+          <button id="BotaoEntrar" type="button" class="btn">Autenticar</button>
+        </div>
+        <p class="apoio"><a href="index.html">Voltar para a votação</a></p>
+      </section>
+    </div>
+
+    <div id="Painel" class="painel-auditor" hidden>
+      <div class="botoes">
+        <button id="BotaoVerificar" type="button" class="btn">Verificar registros</button>
+        <button id="BotaoConferir" type="button" class="btn">Conferir contagem</button>
+        <button id="BotaoBoletim" type="button" class="btn">Gerar boletim</button>
+        <button id="BotaoLog" type="button" class="btn">Ver registros recentes</button>
+        <button id="BotaoBackup" type="button" class="btn secundario" hidden>Fazer backup</button>
+        <button id="BotaoLiberarLote" type="button" class="btn secundario" hidden>Forçar liberação do lote</button>
+        <button id="BotaoSair" type="button" class="btn secundario">Deslogar</button>
+      </div>
+      <div id="Saida" class="resultado">Escolha uma opção acima.</div>
+    </div>
+  </div>
+</div>
+<script src="auditoria.js"></script>
+</body>
+</html>
